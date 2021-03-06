@@ -17,9 +17,9 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public void Get()
+        public HttpResponse Get()
         {
-            
+            HttpResponse reponse = new HttpResponse();
         }
     }
 }
