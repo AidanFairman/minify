@@ -1,8 +1,1 @@
-<<<<<<< HEAD
-=======
-image: gitpod/workspace-dotnet
 
-tasks:
-  - init: dotnet build
-    command: dotnet run
->>>>>>> db93bae3a1731c0b98d99e8101fcf73efe256749
