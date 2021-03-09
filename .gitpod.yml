@@ -2,8 +2,8 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: dotnet clean && dotnet build
-    command: dotnet test
+  - init: dotnet clean && dotnet build && dotnet test
+    command: jq '.url = ${(echo gp url 3306)}' ./minify/dbConfig.json > temp.$$.json && mv tmp.$$.json ./minify/dbConfig.json
 
 vscode:
   extensions:
