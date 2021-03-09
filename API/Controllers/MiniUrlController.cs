@@ -13,12 +13,11 @@ namespace API.Controllers
     [Route("[controller]")]
     public class MiniUrlController : ControllerBase
     {
+        private RedirectAddressService redirectService;
 
-        MySqlClient client;
-
-        public MiniUrlController(MySqlClient _client)
+        public MiniUrlController(RedirectAddressService _redirectService)
         {
-            client = _client;
+            redirectService = _redirectService;
         }
 
         [HttpGet("{minifiedTail}")]
