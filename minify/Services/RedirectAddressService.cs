@@ -10,6 +10,7 @@ namespace minify.Services
         private const string add = "addMapping";
         private const string miniVar = "@mini";
         private const string fullVar = "@full";
+        private const string fullVarOut = "full_url";
         private MySqlConnection sqlConnection;
 
         public RedirectAddressService(MySqlConnection _sqlConnection)
@@ -33,7 +34,7 @@ namespace minify.Services
             if (reader.HasRows)
             {
                 reader.Read();
-                fullUrl = reader["full_url"].ToString();
+                fullUrl = reader[fullVarOut].ToString();
             }
             reader.Close();
             sqlConnection.Close();

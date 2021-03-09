@@ -38,7 +38,6 @@ namespace minify
             Console.Write(connStr);
             MySqlConnection sqlConnection = new MySqlConnection();
             sqlConnection.ConnectionString = connStr;
-            sqlConnection.Open();
 
             services.AddSingleton<MySqlConnection>(sqlConnection);
             services.AddSingleton(typeof(RedirectAddressService));
