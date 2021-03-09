@@ -29,8 +29,8 @@ namespace minify
         public void ConfigureServices(IServiceCollection services)
         {
             MySqlConnection sqlConnection = new MySqlConnection();
-            // sqlConnection.ConnectionString = "server=127.0.0.1;uid=root;pwd=12345;database=test";
-            // sqlConnection.Open();
+            sqlConnection.ConnectionString = "server=127.0.0.1;uid=root;pwd=12345;database=test";
+            sqlConnection.Open();
 
             services.AddSingleton<MySqlConnection>(sqlConnection);
             services.AddSingleton(typeof(RedirectAddressService));

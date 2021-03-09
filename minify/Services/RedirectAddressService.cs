@@ -10,6 +10,10 @@ namespace minify.Services{
             sqlConnection = _sqlConnection;
         }
 
+        public ~RedirectAddressService(){
+            sqlConnection.close();
+        }
+
         public string getRedirectAddress(string minify){
             return "https://www.google.com/";
         }
