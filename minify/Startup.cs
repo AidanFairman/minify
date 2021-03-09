@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using minify.Services;
 using MySql.Data.MySqlClient;
+
 
 namespace minify
 {
@@ -28,8 +30,12 @@ namespace minify
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string url = Configuration.GetValue<string>("ConnectionUrl");
+            string uid = Configuration.GetValue<string>("ConnectionUid");
+            string pwd = Configuration.GetValue<string>("ConnectionPwd");
+            string db = Configuration.GetValue<string>("ConnectionDatabase");
             MySqlConnection sqlConnection = new MySqlConnection();
-            sqlConnection.ConnectionString = "server=127.0.0.1;uid=root;pwd=12345;database=test";
+            sqlConnection.ConnectionString = $"server={url};uid={uid};pwd={pwd};database={db}";
             sqlConnection.Open();
 
             services.AddSingleton<MySqlConnection>(sqlConnection);

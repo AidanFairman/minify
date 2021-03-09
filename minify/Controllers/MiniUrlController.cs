@@ -20,10 +20,16 @@ namespace minify.Controllers
         }
 
         [HttpGet("{minifiedTail}")]
-        public RedirectResult GetFullSite(string minifiedTail)  
-        {  
+        public RedirectResult GetFullSite(string minifiedTail)
+        {
             string newUrl = redirectService.getRedirectAddress(minifiedTail);
-            return Redirect(newUrl);  
-        }  
+            return Redirect(newUrl);
+        }
+
+        [HttpPost("new")]
+        public string AddNewMapping([FromBody] string fullUrl)
+        {
+            return redirectService.addRedirectAddress(fullUrl);
+        }
     }
 }
