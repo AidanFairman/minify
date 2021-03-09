@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
 
 namespace API.Controllers
 {
@@ -12,14 +13,19 @@ namespace API.Controllers
     [Route("[controller]")]
     public class MiniUrlController : ControllerBase
     {
-        public MiniUrlController()
+
+        MySqlClient client;
+
+        public MiniUrlController(MySqlClient _client)
         {
+            client = _client;
         }
 
-        [HttpGet]
-        public HttpResponse Get()
-        {
-            HttpResponse reponse = new HttpResponse();
-        }
+        [HttpGet("{minifiedTail}")]
+        public RedirectResult GetFullSite(string minifiedTail)  
+        {  
+            
+            return Redirect();  
+        }  
     }
 }
