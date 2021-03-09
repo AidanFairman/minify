@@ -34,8 +34,10 @@ namespace minify
             string uid = Configuration.GetValue<string>("ConnectionUid");
             string pwd = Configuration.GetValue<string>("ConnectionPwd");
             string db = Configuration.GetValue<string>("ConnectionDatabase");
+            string connStr = $"server={url};uid={uid};pwd={pwd};database={db}";
+            Console.Write(connStr);
             MySqlConnection sqlConnection = new MySqlConnection();
-            sqlConnection.ConnectionString = $"server={url};uid={uid};pwd={pwd};database={db}";
+            sqlConnection.ConnectionString = connStr;
             sqlConnection.Open();
 
             services.AddSingleton<MySqlConnection>(sqlConnection);
